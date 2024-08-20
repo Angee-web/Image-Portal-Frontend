@@ -14,10 +14,18 @@ interface ActionCenterProps {
 }
 
 const ActionCenter = ({ setOpenCreateModal }: ActionCenterProps) => {
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   return (
     <Wrapper>
-      <Button text="Create" onClick={() => setOpenCreateModal(true)} />
-      <Button text="Refresh" />
+      <Button
+        text="Create"
+        onClick={() => setOpenCreateModal(true)}
+        disabled={false}
+      />
+      <Button text="Refresh" disabled={false} onClick={reloadPage} />
     </Wrapper>
   );
 };

@@ -28,7 +28,7 @@ interface ButtonProps {
   borderColor?: string;
   height?: string;
   type?: "button" | "submit" | "reset";
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -40,7 +40,7 @@ const Button = ({
   borderColor,
   height,
   type,
-  disabled,
+  disabled = false,
 }: ButtonProps) => {
   return (
     <Wrapper
