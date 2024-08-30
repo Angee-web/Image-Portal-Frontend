@@ -23,9 +23,13 @@ const ActionCenter = ({ setOpenCreateModal }: ActionCenterProps) => {
       <Button
         text="Create"
         onClick={() => setOpenCreateModal(true)}
-        disabled={false}
+        disabled={false} // Ensure `disabled` prop is provided
       />
-      <Button text="Refresh" disabled={false} onClick={reloadPage} />
+      <Button
+        text="Refresh"
+        onClick={reloadPage}
+        disabled={false} // Ensure `disabled` prop is provided
+      />
     </Wrapper>
   );
 };

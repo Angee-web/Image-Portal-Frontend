@@ -28,7 +28,7 @@ interface ButtonProps {
   borderColor?: string;
   height?: string;
   type?: "button" | "submit" | "reset";
-  disabled?: boolean;
+  disabled: boolean;
 }
 
 const Button = ({
