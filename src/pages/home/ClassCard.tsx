@@ -1,7 +1,4 @@
-Share
 
-
-You said:
 import styled from "styled-components";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
