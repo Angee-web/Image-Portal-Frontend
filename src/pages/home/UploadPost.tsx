@@ -60,7 +60,7 @@ const UploadPost = () => {
     };
 
     // After the form has been sent use the endpoint to post data
-    fetch("http://localhost:5001/create-post", {
+    fetch("https://image-portal-backend-tmq9.onrender.com/create-post", { // Updated to Render URI
       method: "POST",
       headers: {
         "Content-Type": "application/json",
