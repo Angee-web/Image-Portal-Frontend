@@ -101,7 +101,7 @@ const ClassCard = () => {
   };
 
   const handleDelete = (postId: string) => {
-    fetch(`http://localhost:6020/post/${postId}`, {
+    fetch(`https://image-portal-backend-tmq9.onrender.com/post/${postId}`, {
       method: "DELETE",
     })
       .then((res) => {
