@@ -107,7 +107,7 @@ const CreateModal = ({ setOpenCreateModal }: CreateModalProps) => {
     formData.append("image", file);
 
     try {
-      const res = await axios.post("http://localhost:6020/upload", formData);
+      const res = await axios.post("https://image-portal-backend-tmq9.onrender.com/upload", formData);
       console.log("response", res);
       setImage(res?.data.url);
     } catch (error) {
@@ -117,7 +117,7 @@ const CreateModal = ({ setOpenCreateModal }: CreateModalProps) => {
 
   const handleCreatePost = async () => {
     try {
-      const res = await axios.post("http://localhost:6020/create-post", {
+      const res = await axios.post("https://image-portal-backend-tmq9.onrender.com/create-post", {
         username: userName,
         postDescription: postContent,
         postImage: image,
