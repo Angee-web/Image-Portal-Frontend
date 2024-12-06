@@ -1,3 +1,7 @@
+Share
+
+
+You said:
 import styled from "styled-components";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
@@ -6,7 +10,7 @@ interface WrapperProps {
   isLiked: boolean;
 }
 
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div<WrapperProps>
   border: 1px solid grey;
   border-radius: 8px;
   padding: 24px;
@@ -18,12 +22,12 @@ const Wrapper = styled.div<WrapperProps>`
     height: 60%;
     width: 100%;
     border-radius: 8px 8px 0 0;
-    overflow: hidden;  /* Prevents image overflow */
-    
+
     img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Ensures the full image is visible while maintaining its aspect ratio */
+      border-radius: 8px 8px 0 0;
+      object-fit: cover;
       cursor: pointer;
     }
   }
@@ -74,10 +78,10 @@ const Wrapper = styled.div<WrapperProps>`
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-      width: 100px;
+      width:100px;
     }
   }
-`;
+;
 
 interface Post {
   _id: string;
@@ -89,17 +93,19 @@ interface Post {
 
 const ClassCard = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  // set state for the number of likes and keys for the post id for each post
   const [likes, setLikes] = useState<{ [key: string]: number }>({});
 
+  // update the like state using the post id and the previous state of the like
   const handleLikeClick = (postId: string) => {
     setLikes((prevLikes) => ({
-      ...prevLikes,
-      [postId]: (prevLikes[postId] || 0) + 1,
+      ...prevLikes, //create a copy of all existing likes using the spread operator
+      [postId]: (prevLikes[postId] || 0) + 1, //update the like count with 0 as the initial value
     }));
   };
 
   const handleDelete = (postId: string) => {
-    fetch(`https://image-portal-backend-tmq9.onrender.com/posts/${postId}`, {
+    fetch(https://image-portal-backend-tmq9.onrender.com/posts/${postId}, {
       method: "DELETE",
     })
       .then((res) => {
@@ -120,6 +126,7 @@ const ClassCard = () => {
       .then((data: { data: Post[] }) => {
         setPosts(data.data);
 
+        // Initialize likes count for each post
         const initialLikes = data.data.reduce((acc, post) => {
           acc[post._id] = 0;
           return acc;
@@ -149,7 +156,7 @@ const ClassCard = () => {
 
             <div className="liked" onClick={() => handleLikeClick(post._id)}>
               <CiHeart />
-              <p className="likesCount">{likes[post._id]} likes</p>
+              <p className="likesCount">{likes[post._id]}likes</p>
             </div>
 
             <div className="createdAt">
