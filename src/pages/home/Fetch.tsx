@@ -14,10 +14,10 @@ const App = () => {
 
   useEffect(() => {
     // Fetch posts data from the backend on first render
-    fetch("http://localhost:5001/posts")
+    fetch("https://image-portal-backend-tmq9.onrender.com/posts") // Updated to Render URI
       .then((response) => response.json())
       .then((data) => {
-        setPostData(data.posts);
+        setPostData(data.data); // Assuming the posts are in `data.data` as per the backend response
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
