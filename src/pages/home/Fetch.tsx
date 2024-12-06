@@ -13,16 +13,18 @@ const App = () => {
   const [postData, setPostData] = useState<Post[]>([]);
 
   useEffect(() => {
-    // Fetch posts data from the backend on first render
-    fetch("https://image-portal-backend-tmq9.onrender.com/posts") // Updated to Render URI
-      .then((response) => response.json())
-      .then((data) => {
-        setPostData(data.data); // Assuming the posts are in `data.data` as per the backend response
-      })
-      .catch((err) => {
-        console.error("Error fetching data:", err);
-      });
-  }, []);
+  // Fetch posts data from the backend on first render
+  fetch("https://image-portal-backend-tmq9.onrender.com/posts") 
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Backend response:", data); // Log the response to check its structure
+      setPostData(data.data || []); // Fallback to an empty array if `data.data` is undefined
+    })
+    .catch((err) => {
+      console.error("Error fetching data:", err);
+    });
+}, []);
+
 
   return (
     <div>
