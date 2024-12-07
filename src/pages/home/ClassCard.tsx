@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
@@ -7,7 +6,7 @@ interface WrapperProps {
   isLiked: boolean;
 }
 
-const Wrapper = styled.div<WrapperProps>
+const Wrapper = styled.div<WrapperProps>`
   border: 1px solid grey;
   border-radius: 8px;
   padding: 24px;
@@ -75,10 +74,10 @@ const Wrapper = styled.div<WrapperProps>
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-      width:100px;
+      width: 100px;
     }
   }
-;
+`;
 
 interface Post {
   _id: string;
@@ -90,14 +89,12 @@ interface Post {
 
 const ClassCard = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  // set state for the number of likes and keys for the post id for each post
   const [likes, setLikes] = useState<{ [key: string]: number }>({});
 
-  // update the like state using the post id and the previous state of the like
   const handleLikeClick = (postId: string) => {
     setLikes((prevLikes) => ({
-      ...prevLikes, //create a copy of all existing likes using the spread operator
-      [postId]: (prevLikes[postId] || 0) + 1, //update the like count with 0 as the initial value
+      ...prevLikes,
+      [postId]: (prevLikes[postId] || 0) + 1,
     }));
   };
 
@@ -123,7 +120,6 @@ const ClassCard = () => {
       .then((data: { data: Post[] }) => {
         setPosts(data.data);
 
-        // Initialize likes count for each post
         const initialLikes = data.data.reduce((acc, post) => {
           acc[post._id] = 0;
           return acc;
@@ -153,14 +149,17 @@ const ClassCard = () => {
 
             <div className="liked" onClick={() => handleLikeClick(post._id)}>
               <CiHeart />
-              <p className="likesCount">{likes[post._id]}likes</p>
+              <p className="likesCount">{likes[post._id]} likes</p>
             </div>
 
             <div className="createdAt">
               Created at: {new Date(post.createdAt).toLocaleString()}
             </div>
 
-            <button className="deleteButton" onClick={() => handleDelete(post._id)}>
+            <button
+              className="deleteButton"
+              onClick={() => handleDelete(post._id)}
+            >
               Delete Post
             </button>
           </div>
