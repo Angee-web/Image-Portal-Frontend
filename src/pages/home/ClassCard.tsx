@@ -7,7 +7,7 @@ interface WrapperProps {
 }
 
 const Wrapper = styled.div<WrapperProps>`
-  border: 1px solid grey;
+   border: 1px solid grey;
   border-radius: 8px;
   padding: 24px;
   height: 500px;
@@ -46,7 +46,6 @@ const Wrapper = styled.div<WrapperProps>`
     }
 
     .liked {
-    display: flex;
       width: 30px;
       height: 20px;
       color: ${(props) => (props.isLiked ? "red" : "black")};
@@ -75,7 +74,7 @@ const Wrapper = styled.div<WrapperProps>`
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-      width: 100px;
+      width:100px;
     }
   }
 `;
