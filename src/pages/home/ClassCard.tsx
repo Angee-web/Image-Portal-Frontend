@@ -46,6 +46,7 @@ const Wrapper = styled.div<WrapperProps>`
     }
 
     .liked {
+    display: flex;
       width: 30px;
       height: 20px;
       color: ${(props) => (props.isLiked ? "red" : "black")};
